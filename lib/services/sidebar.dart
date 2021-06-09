@@ -9,6 +9,7 @@ import 'package:kuickmeat_admin_app/screens/manage_banners.dart';
 import 'package:kuickmeat_admin_app/screens/notification_screen.dart';
 import 'package:kuickmeat_admin_app/screens/order_screen.dart';
 import 'package:kuickmeat_admin_app/screens/settings_screen.dart';
+import 'package:kuickmeat_admin_app/screens/vendor_screen.dart';
 
 class SideBarWidget {
   sideBarMenus(context, selectedRoute) {
@@ -26,6 +27,11 @@ class SideBarWidget {
           title: 'Banners',
           route: BannerScreen.id,
           icon: CupertinoIcons.photo,
+        ),
+        MenuItem(
+          title: 'Vendor',
+          route: VendorScreen.id,
+          icon: CupertinoIcons.group_solid,
         ),
         MenuItem(
           title: 'Categories',

@@ -22,7 +22,7 @@ class SettingScreen extends StatelessWidget {
           alignment: Alignment.topLeft,
           padding: const EdgeInsets.all(10),
           child: Text(
-            'Dashboard',
+            'Settings',
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 36,

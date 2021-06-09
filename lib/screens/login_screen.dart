@@ -50,7 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
               }catch(e){
                 //if signing failed
                 progressDialog.dismiss();
-                _showMyDialog(
+                _services.showMyDialog(
+                  context: context,
                   title: 'Login',
                   message: '${e.toString()}',
                 );
@@ -60,33 +61,32 @@ class _LoginScreenState extends State<LoginScreen> {
             }
             //if password is incorrect
             progressDialog.dismiss();
-            _showMyDialog(
+            _services.showMyDialog(
+                context: context,
                 title: 'Incorrect Password',
-                message: 'Password you have entered is invalid'
+                message: 'Password you have entered is invalid, try again'
             );
             return;
           }
           //if username is incorrect
           progressDialog.dismiss();
-          _showMyDialog(
+          _services.showMyDialog(
+              context: context,
             title: 'Invalid Username',
-            message: 'Username you have entered is incorrect'
+            message: 'Username you have entered is incorrect, try again'
           );
         }
         progressDialog.dismiss();
-        _showMyDialog(
+        _services.showMyDialog(
+            context: context,
             title: 'Invalid Username',
-            message: 'Username you have entered is incorrect'
+            message: 'Username you have entered is incorrect, try again'
         );
       });
     }
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.0,
-        title: Text('KuickMeat Admin Dashboard',style: TextStyle(fontWeight: FontWeight.w700),),
-      ),
+
       body: FutureBuilder(
         // Initialize FlutterFire:
         future: _initialization,
@@ -141,9 +141,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.person),
-                                      labelText: 'UserName',
-                                      hintText: 'User Name',
+                                      prefixIcon: Icon(Icons.person, color: Theme.of(context).primaryColor,),
+                                      hintText: 'Username',
                                       focusColor: Theme.of(context).primaryColor,
                                       contentPadding: EdgeInsets.only(left: 20,right: 20),
                                       border: OutlineInputBorder(),
@@ -171,8 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                     obscureText: true,
                                     decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.vpn_key_sharp),
-                                      labelText: 'Password',
+                                      prefixIcon: Icon(Icons.vpn_key_sharp,color: Theme.of(context).primaryColor,),
                                       hintText: 'Minimum 6 characters required',
                                       focusColor: Theme.of(context).primaryColor,
                                       contentPadding: EdgeInsets.only(left: 20,right: 20),
@@ -223,33 +221,5 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  Future<void> _showMyDialog({title, message}) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(message),
-                Text('Please try again'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
 
 }

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:kuickmeat_admin_app/services/sidebar.dart';
-import 'package:kuickmeat_admin_app/widgets/category/category_list_widget.dart';
-import 'package:kuickmeat_admin_app/widgets/category/cateogry_upload_widget.dart';
+import 'package:kuickmeat_admin_app/widgets/vendor/vendor_datatable_widget.dart';
 
-class CategoryScreen extends StatelessWidget {
-  static const String id = 'category-screen';
+class VendorScreen extends StatefulWidget {
+  static const String id = 'vendor-screen';
+  @override
+  _VendorScreenState createState() => _VendorScreenState();
+}
+
+class _VendorScreenState extends State<VendorScreen> {
+  SideBarWidget _sideBar = SideBarWidget();
   @override
   Widget build(BuildContext context) {
-    SideBarWidget _sideBar = SideBarWidget();
     return AdminScaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black87,
         iconTheme: IconThemeData(
@@ -18,25 +22,25 @@ class CategoryScreen extends StatelessWidget {
         ),
         title: const Text('Kuick Meat App Dashboard',style: TextStyle(color: Colors.white),),
       ),
-      sideBar: _sideBar.sideBarMenus(context,CategoryScreen.id),
+      sideBar: _sideBar.sideBarMenus(context,VendorScreen.id),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.topLeft,
           padding: const EdgeInsets.all(10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Categories',
+                'Manage Vendors',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 36,
                 ),
               ),
-              Text('Add New Categories and Sub Categories'),
+              Text('Manage all the Vendors Activities'),
               Divider(thickness: 5,),
-              CategoryCreateWidget(),
+              VendorDataTable(),
               Divider(thickness: 5,),
-              CategoryListWidget(),
             ],
           ),
         ),

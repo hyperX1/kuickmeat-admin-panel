@@ -6,6 +6,7 @@ import 'package:kuickmeat_admin_app/screens/admin_users.dart';
 import 'package:kuickmeat_admin_app/screens/category_screen.dart';
 import 'package:kuickmeat_admin_app/screens/order_screen.dart';
 import 'package:kuickmeat_admin_app/screens/splash_screen.dart';
+import 'package:kuickmeat_admin_app/screens/vendor_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/manage_banners.dart';
 import 'screens/notification_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         NotificationScreen.id:(context)=> NotificationScreen(),
         AdminUsers.id:(context)=> AdminUsers(),
         SettingScreen.id:(context)=> SettingScreen(),
+        VendorScreen.id:(context)=> VendorScreen(),
       },
     );
   }
