@@ -16,7 +16,7 @@ class CategoryScreen extends StatelessWidget {
         iconTheme: IconThemeData(
             color: Colors.white
         ),
-        title: const Text('Kuick Meat App Dashboard',style: TextStyle(color: Colors.white),),
+        title: const Text('Kuick Meat Admin App Dashboard',style: TextStyle(color: Colors.white),),
       ),
       sideBar: _sideBar.sideBarMenus(context,CategoryScreen.id),
       body: SingleChildScrollView(
@@ -24,6 +24,7 @@ class CategoryScreen extends StatelessWidget {
           alignment: Alignment.topLeft,
           padding: const EdgeInsets.all(10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Categories',

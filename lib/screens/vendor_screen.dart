@@ -20,7 +20,7 @@ class _VendorScreenState extends State<VendorScreen> {
         iconTheme: IconThemeData(
             color: Colors.white
         ),
-        title: const Text('Kuick Meat App Dashboard',style: TextStyle(color: Colors.white),),
+        title: const Text('Kuick Meat Admin App Dashboard',style: TextStyle(color: Colors.white),),
       ),
       sideBar: _sideBar.sideBarMenus(context,VendorScreen.id),
       body: SingleChildScrollView(

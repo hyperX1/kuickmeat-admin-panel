@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kuickmeat_admin_app/screens/login_screen.dart';
-
-import 'HomeScreen.dart';
+import 'package:kuickmeat_admin_app/screens/manage_banners.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash-screen';
@@ -24,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
         if (user == null) {
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
         } else {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => BannerScreen()));
         }
       });
     });

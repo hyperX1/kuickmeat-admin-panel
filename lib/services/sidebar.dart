@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
-import 'package:kuickmeat_admin_app/screens/HomeScreen.dart';
-import 'package:kuickmeat_admin_app/screens/admin_users.dart';
 import 'package:kuickmeat_admin_app/screens/category_screen.dart';
+import 'package:kuickmeat_admin_app/screens/delivery_boy_screen.dart';
 import 'package:kuickmeat_admin_app/screens/login_screen.dart';
 import 'package:kuickmeat_admin_app/screens/manage_banners.dart';
-import 'package:kuickmeat_admin_app/screens/notification_screen.dart';
-import 'package:kuickmeat_admin_app/screens/order_screen.dart';
-import 'package:kuickmeat_admin_app/screens/settings_screen.dart';
 import 'package:kuickmeat_admin_app/screens/vendor_screen.dart';
 
 class SideBarWidget {
@@ -18,11 +14,6 @@ class SideBarWidget {
       activeIconColor: Colors.white,
       activeTextStyle: TextStyle(color: Colors.white),
       items: const [
-        MenuItem(
-          title: 'Dashboard',
-          route: HomeScreen.id,
-          icon: Icons.dashboard,
-        ),
         MenuItem(
           title: 'Banners',
           route: BannerScreen.id,
@@ -34,29 +25,14 @@ class SideBarWidget {
           icon: CupertinoIcons.group_solid,
         ),
         MenuItem(
+          title: 'Delivery boy',
+          route: DeliveryBoyScreen.id,
+          icon: Icons.delivery_dining,
+        ),
+        MenuItem(
           title: 'Categories',
           route: CategoryScreen.id,
           icon: Icons.category,
-        ),
-        MenuItem(
-          title: 'Orders',
-          route: OrderScreen.id,
-          icon: CupertinoIcons.cart_fill,
-        ),
-        MenuItem(
-          title: 'Send Notification',
-          route: NotificationScreen.id,
-          icon: Icons.notifications,
-        ),
-        MenuItem(
-          title: 'Admin Users',
-          route: AdminUsers.id,
-          icon: Icons.person_rounded,
-        ),
-        MenuItem(
-          title: 'Settings',
-          route: SettingScreen.id,
-          icon: Icons.settings,
         ),
         MenuItem(
           title: 'Exit',
@@ -89,7 +65,7 @@ class SideBarWidget {
         color: Colors.black26,
         child: Center(
           child: Image.asset(
-            'images/beef.png',
+            'images/logo.png',
             height: 40,
           ),
         ),

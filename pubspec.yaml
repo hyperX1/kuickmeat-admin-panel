@@ -24,6 +24,7 @@ dependencies:
   firebase: ^9.0.1
   firebase_storage: ^8.0.5
   chips_choice: ^2.0.1
+  flutter_switch: ^0.3.1
 
 dev_dependencies:
   flutter_test:

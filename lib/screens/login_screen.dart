@@ -2,9 +2,8 @@ import 'package:ars_progress_dialog/ars_progress_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kuickmeat_admin_app/screens/manage_banners.dart';
 import 'package:kuickmeat_admin_app/services/firebase_services.dart';
-
-import 'HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login-screen';
@@ -42,9 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
               try{
                 UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
                 if(userCredential!=null){
-                  //if signin success, will navigate to Home Screen
+                  //if signin success, will navigate to Banner Screen
                   progressDialog.dismiss();
-                  Navigator.pushReplacementNamed(context, HomeScreen.id);
+                  Navigator.pushReplacementNamed(context, BannerScreen.id);
                 }
 
               }catch(e){
@@ -115,97 +114,98 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Center(
                 child: Container(
                   width: 300,
-                  height: 400,
+                  height: 450,
                   child: Card(
                     elevation: 6,
                     shape: Border.all(color: Colors.red,width: 2),
                     child: Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Form(
                         key: _formKey,
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  Image.asset('images/beef.png',width: 80,height: 80,),
-                                  Text('KUICKMEAT APP ADMIN', style: TextStyle(fontWeight: FontWeight.w900,fontSize: 20,),),
-                                  SizedBox(height: 20,),
-                                  TextFormField(
-                                    controller: _usernameTextController,
-                                    validator: (value){
-                                      if(value.isEmpty){
-                                        return 'Enter Username';
-                                      }
-                                      return null;
-                                    },
-                                    decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.person, color: Theme.of(context).primaryColor,),
-                                      hintText: 'Username',
-                                      focusColor: Theme.of(context).primaryColor,
-                                      contentPadding: EdgeInsets.only(left: 20,right: 20),
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  TextFormField(
-                                    controller: _passwordTextController,
-                                    validator: (value){
-                                      if(value.isEmpty){
-                                        return 'Enter Password';
-                                      }
-                                      if(value.length<6){
-                                        return 'Minimum 6 characters required';
-                                      }
-                                      return null;
-                                    },
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.vpn_key_sharp,color: Theme.of(context).primaryColor,),
-                                      hintText: 'Minimum 6 characters required',
-                                      focusColor: Theme.of(context).primaryColor,
-                                      contentPadding: EdgeInsets.only(left: 20,right: 20),
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context).primaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Row(
                               children: [
-                                Expanded(
-                                  child: FlatButton(
-                                    onPressed: () async {
-                                      if(_formKey.currentState.validate()){
-                                        _login(
-                                          username: _usernameTextController.text,
-                                          password: _passwordTextController.text,
-                                        );
-                                      }
-                                    },
-                                    child: Text('Login',style: TextStyle(color: Colors.white),),
-                                    color: Theme.of(context).primaryColor,
+                                Container(child: Image.asset('images/logo.png',height: 220,width: 220,)),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      TextFormField(
+                                        controller: _usernameTextController,
+                                        validator: (value){
+                                          if(value.isEmpty){
+                                            return 'Enter Username';
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          prefixIcon: Icon(Icons.person, color: Theme.of(context).primaryColor,),
+                                          hintText: 'Username',
+                                          focusColor: Theme.of(context).primaryColor,
+                                          contentPadding: EdgeInsets.only(left: 20,right: 20),
+                                          border: OutlineInputBorder(),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Theme.of(context).primaryColor,
+                                              width: 2,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      TextFormField(
+                                        controller: _passwordTextController,
+                                        validator: (value){
+                                          if(value.isEmpty){
+                                            return 'Enter Password';
+                                          }
+                                          if(value.length<6){
+                                            return 'Minimum 6 characters required';
+                                          }
+                                          return null;
+                                        },
+                                        obscureText: true,
+                                        decoration: InputDecoration(
+                                          prefixIcon: Icon(Icons.vpn_key_sharp,color: Theme.of(context).primaryColor,),
+                                          hintText: 'Minimum 6 characters required',
+                                          focusColor: Theme.of(context).primaryColor,
+                                          contentPadding: EdgeInsets.only(left: 20,right: 20),
+                                          border: OutlineInputBorder(),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Theme.of(context).primaryColor,
+                                              width: 2,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: FlatButton(
+                                          onPressed: () async {
+                                            if(_formKey.currentState.validate()){
+                                              _login(
+                                                username: _usernameTextController.text,
+                                                password: _passwordTextController.text,
+                                              );
+                                            }
+                                          },
+                                          child: Text('Login',style: TextStyle(color: Colors.white),),
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
-                            ),
-                          ],
-                        ),),
+                            ),),
                     ),
                   ),
                 ),

@@ -1,3 +1,4 @@
+
 import 'dart:html';
 
 import 'package:ars_progress_dialog/ars_progress_dialog.dart';
@@ -126,6 +127,7 @@ class _BannerUploadWidgetState extends State<BannerUploadWidget> {
 
     //selected image
   }
+
   void uploadStorage(){
     //upload selected image to firebase storage
     final dateTime = DateTime.now();
